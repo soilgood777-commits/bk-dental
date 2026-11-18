@@ -61,6 +61,22 @@
     }).observe(host, { subtree: true, childList: true, attributes: true, attributeFilter: ['href'] });
   }
 
+  // 아임웹 기본 요소(숨김 처리됨) 안의 javascript: 링크 정리 — 검색엔진이 '따라갈 수 없는 링크'로 보지 않게
+  function tidy() {
+    var app = document.getElementById('bk-app');
+    var list = document.querySelectorAll('a[href^="javascript:"], a[href=""]');
+    for (var i = 0; i < list.length; i++) {
+      var a = list[i];
+      if (app && app.contains(a)) continue;
+      a.removeAttribute('href');
+      if (!a.getAttribute('role')) a.setAttribute('role', 'button');
+    }
+  }
+  if (window.top === window.self && !/\/admin/.test(location.pathname)) {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tidy); else tidy();
+    window.addEventListener('load', function () { tidy(); setTimeout(tidy, 1500); });
+  }
+
   // 디자인 데이터에 진료별 기본 화면 / 페이지 이동 연결
   if (window.BK && window.BK.start && !window.BK.__seo) {
     var start = window.BK.start;
