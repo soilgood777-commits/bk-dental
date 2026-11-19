@@ -6,9 +6,9 @@
   var SLUG = {
     implant: 'implant', wisdom: 'wisdom-tooth', ortho: 'front-ortho', clear: 'clear-aligner',
     laminate: 'laminate', white: 'whitening', cavity: 'cavity-root-canal', gum: 'gum-scaling',
-    tmj: 'tmj-bruxism', snore: 'snoring'
+    tmj: 'tmj-bruxism', snore: 'snoring', checkup: 'checkup'
   };
-  var GROUP = { implant: 'implant', aesthetic: 'laminate', wisdom: 'wisdom', save: 'cavity', special: 'tmj' };
+  var GROUP = { implant: 'implant', aesthetic: 'laminate', wisdom: 'wisdom', save: 'cavity', special: 'tmj', checkup: 'checkup' };
   var PAGE = { about: '/about', doctors: '/doctor', facility: '/facility', visit: '/location' };
   var VISIT = { hours: 1, prep: 1, cost: 1 };
 
